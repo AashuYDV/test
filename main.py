@@ -13,7 +13,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from pymongo import MongoClient
 from dotenv import load_dotenv
-
+from pathlib import Path
 load_dotenv()
 
 # ── Absolute path so Render can find frontend/ regardless of cwd ──────────────
@@ -335,4 +335,11 @@ def health():
 
 
 # ── Serve frontend — MUST be last, uses absolute path ─────────────────────────
+
+print("=" * 50)
+print("cwd:", os.getcwd())
+print("files:", os.listdir("."))
+print("frontend exists:", Path("frontend").exists())
+print("frontend absolute:", Path("frontend").resolve())
+print("=" * 50)
 app.mount("/", StaticFiles(directory=FRONTEND_DIR, html=True), name="frontend")
