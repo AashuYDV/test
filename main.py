@@ -19,7 +19,7 @@ load_dotenv()
 app = FastAPI(title="Offer Predictor API", version="1.0")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 
-MONGO_URI = os.getenv("MONGO_URI", "mongodb+srv://reggie_ledoux:ashu9752121@cluster0.jwzil8r.mongodb.net/?appName=Cluster0")
+MONGO_URI = os.getenv("MONGO_URI", "mongodb://localhost:27017")
 _client   = MongoClient(MONGO_URI, serverSelectionTimeoutMS=8000)
 col       = _client["offer_predictor"]["admits"]
 
